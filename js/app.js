@@ -67,11 +67,12 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
-var enemy = new Enemy(-150, 280, 50);
-var enemy2 = new Enemy(-50,0, 250);
+var possiblePositions = [50, 140, 225];
+var initialPosition = possiblePositions[Math.floor(Math.random() * possiblePositions.length)];
+var enemy = new Enemy(-150, initialPosition, Math.random() * 256);
 var player = new Player(200, 380, 50);
 
-allEnemies.push(enemy, enemy2);
+allEnemies.push(enemy);
 
 
 // This listens for key presses and sends the keys to your
