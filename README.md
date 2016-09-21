@@ -1,12 +1,21 @@
-frontend-nanodegree-arcade-game
-===============================
+# Frogger Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This is an ongoing project that I'm working on for the Front-end Nanodegree of Udacity.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+It's a Frogger game clone, developed in Javascript.
 
-TODO:
-- add a countdown before the start of each level
-- stylize score
-- include win/lose messages - OK
-- allow character choice?
+* Project  [rubric](https://review.udacity.com/#!/projects/2696458597/rubric)
+
+* [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+
+## Running the project
+1. Download the project as a zip file of clone it to your local machine.
+2. Open the `index.html`
+3. Run across the street avoiding the bugs!
+
+##TODO:
+
+* add a countdown before the start of each level
+* stylize score
+* ~~Include win/lose messages~~
+* allow character choice?
