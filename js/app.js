@@ -1,3 +1,27 @@
+var CustomAlert = function(){
+
+  this.render = function(dialog){
+      var winW = window.innerWidth;
+      var winH = window.innerHeight;
+      var dialogoverlay = document.getElementById('dialogoverlay');
+      var dialogbox = document.getElementById('dialogbox');
+      dialogoverlay.style.display = "block";
+      dialogoverlay.style.height = winH+"px";
+      dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+      dialogbox.style.top = "100px";
+      dialogbox.style.display = "block";
+      document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message";
+      document.getElementById('dialogboxbody').innerHTML = dialog;
+      document.getElementById('dialogboxfoot').innerHTML = '<button onclick="alert.ok()">OK</button>';
+  }
+	this.ok = function(){
+		document.getElementById('dialogbox').style.display = "none";
+		document.getElementById('dialogoverlay').style.display = "none";
+	}
+}
+var alert = new CustomAlert();
+
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -77,6 +101,7 @@ var checkCollision = function(anEnemy) {
     if (
         player.y + 25 >= anEnemy.y && player.y - 25 <= anEnemy.y &&
         player.x + 60 >= anEnemy.x && player.x - 60 <= anEnemy.x ) {
+        alert.render('You Lose!');
 
         if (score >= 5) {
           score -= 5;
@@ -92,7 +117,7 @@ var checkCollision = function(anEnemy) {
     else if (player.y + 60 <= 0) {
         player.x = 200;
         player.y = 380;
-        console.log('you win');
+        alert.render('You Win!');
 
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, 505, 171);
