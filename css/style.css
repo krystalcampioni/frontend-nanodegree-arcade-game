@@ -1,6 +1,18 @@
+@import 'https://fonts.googleapis.com/css?family=Amatic+SC';
+
 body {
-    text-align: center;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
 }
+
+.score {
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  width: 98%;
+}
+
 #dialogoverlay{
 	display: none;
 	opacity: .8;

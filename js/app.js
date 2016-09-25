@@ -76,14 +76,17 @@ Player.prototype.handleInput = function(key) {
   if (key == 'left') {
       player.x -= player.speed + 52;
   }
-  if (key == 'up') {
+  else if (key == 'up') {
       player.y -= player.speed + 30;
   }
-  if (key == 'right') {
+  else if (key == 'right') {
       player.x += player.speed + 52;
   }
-  if (key == 'down') {
+  else if (key == 'down') {
       player.y += player.speed + 30;
+  }
+  else if (key == 'enter') {
+      alert.ok();
   }
 };
 
@@ -93,7 +96,7 @@ var displayScoreLevel = function(aScore, aLevel) {
 
     // add player score and level to div element created
     scoreLevelDiv.innerHTML = 'Score: ' + aScore + ' / ' + 'Level: ' + aLevel;
-    document.body.insertBefore(scoreLevelDiv, firstCanvasTag[0]);
+    document.body.insertBefore(scoreLevelDiv, document.body.childNodes[0]);
 };
 
 var checkCollision = function(anEnemy) {
@@ -182,7 +185,8 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        13: 'enter'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
