@@ -16,6 +16,6 @@ It's a Frogger game clone, developed in Javascript.
 ##TODO:
 
 * add a countdown before the start of each level
-* stylize score
+* ~~stylize score~~
 * ~~Include win/lose messages~~
 * allow character choice?
