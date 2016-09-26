@@ -79,9 +79,54 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
+
+    function checkCollisions(){
+        // check for collision between enemy and player
+        allEnemies.forEach(function(enemy) {
+          if (
+              player.y + 25 >= enemy.y && player.y - 25 <= enemy.y &&
+              player.x + 60 >= enemy.x && player.x - 60 <= enemy.x) {
+              alert.render('😢', 'You Lose! Try again');
+
+              if (score >= 5) { // prevents score from going negative
+                  score -= 5;
+              }
+
+              player.x = 200;
+              player.y = 380;
+          }
+        });
+
+        // check for player reaching top of canvas and winning the game
+        // if player wins, add 1 to the score and level
+        // pass score as an argument to the increaseDifficulty function
+        if (player.y + 60 <= tileHeight) {
+            player.x = 200;
+            player.y = 380;
+            alert.render('😀', 'You Win! Get ready to the next level');
+
+            score += 10;
+            gameLevel += 1;
+
+            increaseDifficulty(gameLevel - 1);
+            // as the games starts on level 1, if the player wins,
+            // I subtract 1 from the gameLevel passed to the increaseDifficulty function
+
+        }
+
+        // creates invisible walls to prevent player from moving off canvas
+        if (player.y > 380) {
+            player.y = 380;
+        } else if (player.x > 400) {
+            player.x = 400;
+        } else if (player.x < 2.5) {
+            player.x = 2.5;
+        }
+    }
+
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the

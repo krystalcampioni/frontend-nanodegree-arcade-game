@@ -47,8 +47,6 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 505) {
         this.x = Math.floor(Math.random() * ((-350) - (-150) + 1) + -150); //loops enemies offscreen
     }
-
-    checkCollision(this);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -99,48 +97,8 @@ var displayScoreLevel = function(aScore, aLevel) {
     scoreDiv.innerHTML = 'Score: ' + aScore;
     levelDiv.innerHTML = 'Level: ' + aLevel;
 };
-
-var checkCollision = function(anEnemy) {
-    // check for collision between enemy and player
-    if (
-        player.y + 25 >= anEnemy.y && player.y - 25 <= anEnemy.y &&
-        player.x + 60 >= anEnemy.x && player.x - 60 <= anEnemy.x) {
-        alert.render('😢', 'You Lose! Try again');
-
-        if (score >= 5) { // prevents score from going negative
-            score -= 5;
-        }
-
-        player.x = 200;
-        player.y = 380;
-    }
-
-    // check for player reaching top of canvas and winning the game
-    // if player wins, add 1 to the score and level
-    // pass score as an argument to the increaseDifficulty function
-    else if (player.y + 60 <= tileHeight) {
-        player.x = 200;
-        player.y = 380;
-        alert.render('😀', 'You Win! Get ready to the next level');
-
-        score += 10;
-        gameLevel += 1;
-
-        increaseDifficulty(gameLevel - 1);
-        // as the games starts on level 1, if the player wins,
-        // I subtract 1 from the gameLevel passed to the increaseDifficulty function
-
-    }
-
-    // creates invisible walls to prevent player from moving off canvas
-    if (player.y > 380) {
-        player.y = 380;
-    } else if (player.x > 400) {
-        player.x = 400;
-    } else if (player.x < 2.5) {
-        player.x = 2.5;
-    }
-};
+//
+// var checkCollisions = function(anEnemy)
 
 var increaseDifficulty = function(numEnemies) {
     // remove all previous enemies on canvas
