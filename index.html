@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="dialogoverlay"></div>
-    <div id="dialogbox">
-      <div>
-        <div id="dialogboxhead"></div>
-        <div id="dialogboxbody"></div>
+  <div id="dialogoverlay" class="dialog__overlay"></div>
+    <div id="dialogbox" class="dialog__box">
+        <div id="dialogboxtitle" class="dialog__title"></div>
+        <div id="dialogboxbody" class="dialog__body"></div>
         <div id="dialogboxfoot"></div>
-      </div>
+    </div>
+
+    <div id="game" class="game">
+      <div class="score" id="score"></div>
+      <div class="level" id="level"></div>
     </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>

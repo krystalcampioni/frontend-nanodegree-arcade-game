@@ -1,37 +1,80 @@
-@import 'https://fonts.googleapis.com/css?family=Amatic+SC';
+@import 'https://fonts.googleapis.com/css?family=Amatic+SC:700';
+
+:root {
+  --pink: #e91e63;
+  --medium-gray: #385461;
+  --white: #fff;
+}
 
 body {
   text-align: center;
   font-family: 'Amatic SC', cursive;
 }
 
-.score {
-  font-size: 30px;
-  font-weight: bold;
-  position: absolute;
-  text-align: center;
-  width: 98%;
+.game {
+  position: relative;
+  width: 510px;
+  margin: 0 auto;
 }
 
-#dialogoverlay{
+.dialog {
+
+}
+
+.dialog__button {
+  background: var(--pink);
+  border-radius: 5px;
+  border: 0;
+  color: var(--white);
+  font-family: 'Amatic SC', cursive;
+  font-size: 22px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  width: 250px;
+}
+
+.score,
+.level {
+  font-size: 25px;
+  top: 5px;
+  position: absolute;
+  color: white;
+  background: var(--pink);
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.score { left: 0; }
+
+.level { right: 0; }
+
+.dialog__overlay {
+	background: var(--pink);
 	display: none;
+	left: 0px;
 	opacity: .8;
 	position: fixed;
 	top: 0px;
-	left: 0px;
-	background: #FFF;
 	width: 100%;
 	z-index: 10;
 }
-#dialogbox{
-	display: none;
-	position: fixed;
-	background: #000;
-	border-radius:7px;
-	width:550px;
-	z-index: 10;
+
+.dialog__box {
+  background: var(--white);
+  border-radius: 5px;
+  display: none;
+  padding: 20px;
+  position: fixed;
+  width: 550px;
+  z-index: 10;
 }
-#dialogbox > div{ background:#FFF; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
-#dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
-#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+
+.dialog__title {
+  font-size: 80px;
+}
+
+.dialog__body {
+  color: var(--medium-gray);
+  font-size: 45px;
+  padding-bottom: 20px;
+}
