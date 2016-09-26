@@ -118,7 +118,7 @@ var checkCollision = function(anEnemy) {
     // check for player reaching top of canvas and winning the game
     // if player wins, add 1 to the score and level
     // pass score as an argument to the increaseDifficulty function
-    else if (player.y + 60 <= TILE_HEIGHT) {
+    else if (player.y + 60 <= tileHeight) {
         player.x = 200;
         player.y = 380;
         alert.render('😀', 'You Win! Get ready to the next level');
