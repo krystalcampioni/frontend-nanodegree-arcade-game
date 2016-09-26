@@ -1,25 +1,30 @@
-// Creates the dialog boxes when the player wins or loses the game
-var CustomAlert = function(){
+var tileWidth = 101,
+    tileHeight = 83;
 
-  this.render = function(title, dialog){
-      var winW = window.innerWidth;
-      var winH = window.innerHeight;
-      var dialogoverlay = document.getElementById('dialogoverlay');
-      var dialogbox = document.getElementById('dialogbox');
-      dialogoverlay.style.display = "block";
-      dialogoverlay.style.height = winH+"px";
-      dialogbox.style.left = (winW/2) - (550 * .5)+"px";
-      dialogbox.style.top = "100px";
-      dialogbox.style.display = "block";
-      document.getElementById('dialogboxtitle').innerHTML = title;
-      document.getElementById('dialogboxbody').innerHTML = dialog;
-      document.getElementById('dialogboxfoot').innerHTML = '<button class="dialog__button" onclick="alert.ok()">OK</button>';
-  }
-	this.ok = function(){
-		document.getElementById('dialogbox').style.display = "none";
-		document.getElementById('dialogoverlay').style.display = "none";
-	}
-}
+// Creates the dialog boxes when the player wins or loses the game
+var CustomAlert = function() {
+
+    this.render = function(title, dialog) {
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        var dialogoverlay = document.getElementById('dialogoverlay');
+        var dialogbox = document.getElementById('dialogbox');
+        dialogoverlay.style.display = "block";
+        dialogoverlay.style.height = winH + "px";
+        dialogbox.style.left = (winW / 2) - (550 * 0.5) + "px";
+        dialogbox.style.top = "100px";
+        dialogbox.style.display = "block";
+        document.getElementById('dialogboxtitle').innerHTML = title;
+        document.getElementById('dialogboxbody').innerHTML = dialog;
+        document.getElementById('dialogboxfoot').innerHTML = '<button class="dialog__button" onclick="alert.ok()">OK</button>';
+    };
+
+    this.ok = function() {
+        document.getElementById('dialogbox').style.display = "none";
+        document.getElementById('dialogoverlay').style.display = "none";
+    };
+
+};
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
@@ -37,13 +42,13 @@ var Enemy = function(x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-  this.x += this.speed * dt;
+    this.x += this.speed * dt;
 
-  if (this.x >= 505) {
-      this.x = Math.floor(Math.random()*((-350) - (-150) + 1)+ -150); //loops enemies offscreen
-  }
+    if (this.x >= 505) {
+        this.x = Math.floor(Math.random() * ((-350) - (-150) + 1) + -150); //loops enemies offscreen
+    }
 
-  checkCollision(this);
+    checkCollision(this);
 };
 
 // Draw the enemy on the screen, required method for game
@@ -73,21 +78,17 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(key) {
-  if (key == 'left') {
-      player.x -= player.speed + 52;
-  }
-  else if (key == 'up') {
-      player.y -= player.speed + 30;
-  }
-  else if (key == 'right') {
-      player.x += player.speed + 52;
-  }
-  else if (key == 'down') {
-      player.y += player.speed + 30;
-  }
-  else if (key == 'enter') { // if the player presses enter, close the win/lose modal
-      alert.ok();
-  }
+    if (key == 'left') {
+        this.x -= tileWidth;
+    } else if (key == 'up') {
+        this.y -= tileHeight;
+    } else if (key == 'right') {
+        this.x += tileWidth;
+    } else if (key == 'down') {
+        this.y += tileHeight;
+    } else if (key == 'enter') { // if the player presses enter, close the win/lose modal
+        alert.ok();
+    }
 };
 
 var displayScoreLevel = function(aScore, aLevel) {
@@ -103,11 +104,11 @@ var checkCollision = function(anEnemy) {
     // check for collision between enemy and player
     if (
         player.y + 25 >= anEnemy.y && player.y - 25 <= anEnemy.y &&
-        player.x + 60 >= anEnemy.x && player.x - 60 <= anEnemy.x ) {
-        alert.render( '😢', 'You Lose! Try again');
+        player.x + 60 >= anEnemy.x && player.x - 60 <= anEnemy.x) {
+        alert.render('😢', 'You Lose! Try again');
 
         if (score >= 5) { // prevents score from going negative
-          score -= 5;
+            score -= 5;
         }
 
         player.x = 200;
@@ -117,7 +118,7 @@ var checkCollision = function(anEnemy) {
     // check for player reaching top of canvas and winning the game
     // if player wins, add 1 to the score and level
     // pass score as an argument to the increaseDifficulty function
-    else if (player.y + 60 <= 0) {
+    else if (player.y + 60 <= TILE_HEIGHT) {
         player.x = 200;
         player.y = 380;
         alert.render('😀', 'You Win! Get ready to the next level');
@@ -132,13 +133,11 @@ var checkCollision = function(anEnemy) {
     }
 
     // creates invisible walls to prevent player from moving off canvas
-    if (player.y > 380 ) {
+    if (player.y > 380) {
         player.y = 380;
-    }
-    else if (player.x > 400) {
+    } else if (player.x > 400) {
         player.x = 400;
-    }
-    else if (player.x < 2.5) {
+    } else if (player.x < 2.5) {
         player.x = 2.5;
     }
 };
@@ -152,9 +151,9 @@ var increaseDifficulty = function(numEnemies) {
         initialPosition = possiblePositions[Math.floor(Math.random() * possiblePositions.length)]; // generates a random y position from the possiblePositions
 
         enemy = new Enemy(
-          Math.floor(Math.random()*((-350) - (-150) + 1)+ -150), // generates a random X position off screen
-          initialPosition,
-          (Math.random() * (250 - 100) + 100) // generates a random sppeed and adds 100 to it
+            Math.floor(Math.random() * ((-350) - (-150) + 1) + -150), // generates a random X position off screen
+            initialPosition,
+            (Math.random() * (250 - 100) + 100) // generates a random sppeed and adds 100 to it
         );
 
         allEnemies.push(enemy);
