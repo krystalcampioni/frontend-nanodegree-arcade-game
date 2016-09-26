@@ -100,7 +100,7 @@ var Engine = (function(global) {
         // check for player reaching top of canvas and winning the game
         // if player wins, add 1 to the score and level
         // pass score as an argument to the increaseDifficulty function
-        if (player.y + 60 <= tileHeight) {
+        if (player.y + 60 <= TILE_HEIGHT) {
             player.x = 200;
             player.y = 380;
             alert.render('😀', 'You Win! Get ready to the next level');

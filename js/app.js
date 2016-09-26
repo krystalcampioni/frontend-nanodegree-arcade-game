@@ -1,5 +1,7 @@
-var tileWidth = 101,
-    tileHeight = 83;
+'use strict';
+
+var TILE_WIDTH = 101,
+    TILE_HEIGHT = 83;
 
 // Creates the dialog boxes when the player wins or loses the game
 var CustomAlert = function() {
@@ -77,13 +79,13 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(key) {
     if (key == 'left') {
-        this.x -= tileWidth;
+        this.x -= TILE_WIDTH;
     } else if (key == 'up') {
-        this.y -= tileHeight;
+        this.y -= TILE_HEIGHT;
     } else if (key == 'right') {
-        this.x += tileWidth;
+        this.x += TILE_WIDTH;
     } else if (key == 'down') {
-        this.y += tileHeight;
+        this.y += TILE_HEIGHT;
     } else if (key == 'enter') { // if the player presses enter, close the win/lose modal
         alert.ok();
     }
